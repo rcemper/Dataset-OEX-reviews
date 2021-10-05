@@ -10,9 +10,10 @@ The next run collects updates and details of the packages as available.
 Some informatinon is missing as it gets inserted dynamically over several   
 fetch cycles while I have just 1 from IRIS.   
  
-A utility to load and update is included. to use these methods you need to    
-create an SSL Configuration named "community" in SMP    
-for client access to _community.intersystems.com:443_
+A utility to load and update is included. To use these methods you will    
+need to create an SSL Configuration named "community" in SMP    
+for client access to _community.intersystems.com:443_ .    
+This is included in Docker image setup.  
 
 ## Prerequisites
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
