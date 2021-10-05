@@ -1,39 +1,18 @@
-# Dataset Lightweight M:N
-This data set demonstrates a basic M:N relationship between 2 tables   
-The dataset is targeted to show a **slim** implementation of M:N    
-It's no question that other implementations exist. But at significant more storage consumption.
+# Dataset OEX Reviews
+This data set is my personal log of running reviewy in Open Exchange.   
+It is just a table with 504 records and no special features.    
+Ready to run experiments on varius way of indexing.   
 
-The first is a list of members in Developer Community counting badges gained in Global Masters   
-The second is the reference of assigned badges from Global Masters with their titles   
-So we have M members that refer to the multiple badges they gained + their count    
-And we have a set of N Bagdes that are assigned to several members + the count of members   
-related to that badge and the Ids to these members.   
-
-All datas result from the analysis of the member web pages in Developer Community   
-A utility for updates of ídentified members and the addition of new members is provided   
-The actual status reflects 9690 account pages downloaded and analyzed relating to 177 badges.   
-
-Relations are implemented as Lists of pure id's (not *oref* to save space)   
-````
-/// pure ID of awarded GM badges
-Property Badges As List Of %Integer;
-
-/// pure ID of assigned members
-Property Members As List Of %Integer;
-````
-
-A few explanations on operation structures for further extension:   
-- GM badges never change or get deleted - so they just can grow   
-- DC members can get GM badges granted, but they will never lose it  
-It is up to you to take care for correct maintenance of the M:N relations    
-for DELETE or UPDATE of DC members. This is intentionally left open.   
-
-3 utility methods are provided:   
-- Load(): this loads and analyzes the information presented on the member's page     
-- Upd() : runs over every defined member using *Load()* for actual values    
-- New() : runs past the highest known MemberId and tries to find new ones  
-MemberId's are not given in closed sequence. So they can't be predicted but only tried
-- To use these methods you need to create a SSL Configuration named " community" in SMP for client access to _community.intersystems.com:443_
+All data result from the analysis of the OEX web pages.   
+The first run collects the url for the Details pages skipping duplicates    
+imposed by the "featured" header block.   
+The next run collects updates and details of the packages as available.   
+Some informatino is missing as it gets inserted dynamically over several   
+fetch cycles while I have just 1 from IRIS.   
+ 
+A utility to load and update is included. to use these methods you need to    
+create a SSL Configuration named "community" in SMP for client access to 
+_community.intersystems.com:443_
 
 ## Prerequisites
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
@@ -49,43 +28,45 @@ docker-compose up -d --build
 ```
 ## How to Test it
 Connect to the containers SMP and examine content in namespace USER
-applying the decribed examples
+applying the decribed examples or use commandline $system.SQL.Shell()
 
 ### Example 1 
-- find badges for specific members
+- distibution of ratings
 ```
-  select name,title FROM dc_data_rcc.DCmember
-  join dc_data_rcc.GMbadge on BadgeId %inlist (badges)
-  where mbrid in (13081,65426) 
-  order by 1,2
+  SELECT count(id) pkg, stars
+  FROM dc_data_rcc.OEX
+  group by NVL(stars,-1)
+  order by 2 desc
 ----------------------------------------------
-Name               Title
-Joerg Schuck       1,000 Points
-Joerg Schuck       Challenge Starter
-Joerg Schuck       DC Commenter
-Joerg Schuck       Open Sesame!
-Leontiy Mischenko  1,000 Points
-Leontiy Mischenko  5,000 Points
-Leontiy Mischenko  Challenge Starter
-Leontiy Mischenko  Open Sesame!
+pkg stars
+ 7   6.0
+ 1   5.5
+ 66  5.0
+ 24  4.5
+ 14  4.0
+ 13  3.5
+ 14  3.0
+ 6   2.5
+ 9   2.0
+ 4   1.5
+ 4   1.0
+ 5   0.5
+337  0.0
 ----------------------------------------------
 ```
 ### Example 2
-- find DCmembers that hold a specific GMbadge
+- find top rated authors
 ```
-  select title, name FROM dc_data_rcc.GMbadge
-  join dc_data_rcc.DCmember on mbrid %inlist (members)
-  where badgeid in (15,25)
-  order by 1,2
+SELECT stars, %exact(author) author
+FROM dc_data_rcc.OEX
+where stars > 5 group by author order by 1 desc
 ----------------------------------------------
-Title                 Name
-Conversation Starter  Dmitry Maslennikov
-Conversation Starter  Fabian Haupt
-Conversation Starter  Robert Cemper
-Conversation Starter  Scott Beeson
-Conversationalist     david clifte
-Conversationalist     Robert Cemper
-Conversationalist     Scott Beeson
-Conversationalist     Stephen De Gabrielle
+stars	author
+6.0	Michael Braam
+6.0	Peter Steiwer
+6.0	Guillaume Rongier
+6.0	Jose Tomas Salvador
+6.0	Lorenzo Scalese
+5.5	Evgeny Shvarov
 ----------------------------------------------
 ```
