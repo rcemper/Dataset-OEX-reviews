@@ -70,3 +70,5 @@ stars	author
 5.5	Evgeny Shvarov
 ----------------------------------------------
 ```
+
+[Article in DC](https://community.intersystems.com/post/dataset-oex-reviews)
