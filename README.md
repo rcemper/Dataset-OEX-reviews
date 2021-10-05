@@ -1,18 +1,18 @@
 # Dataset OEX Reviews
-This data set is my personal log of running reviewy in Open Exchange.   
+This data set is my personal log of running reviews in Open Exchange.   
 It is just a table with 504 records and no special features.    
-Ready to run experiments on varius way of indexing.   
+Ready to run experiments on various ways of indexing.   
 
-All data result from the analysis of the OEX web pages.   
-The first run collects the url for the Details pages skipping duplicates    
+All data resulting from the analysis of the OEX web pages.   
+The first run collects the URL for the Details pages skipping duplicates    
 imposed by the "featured" header block.   
 The next run collects updates and details of the packages as available.   
-Some informatino is missing as it gets inserted dynamically over several   
+Some informatinon is missing as it gets inserted dynamically over several   
 fetch cycles while I have just 1 from IRIS.   
  
 A utility to load and update is included. to use these methods you need to    
-create a SSL Configuration named "community" in SMP for client access to 
-_community.intersystems.com:443_
+create an SSL Configuration named "community" in SMP    
+for client access to _community.intersystems.com:443_
 
 ## Prerequisites
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
