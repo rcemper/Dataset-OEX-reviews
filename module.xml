@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+  <Document name="dataset-simple-m-n.ZPM">
+    <Module>
+      <Name>dataset-simple-m-n</Name>
+      <Version>1.0.4</Version>
+      <Description>Example of M:N relation</Description>
+      <Keywords>M:N relation, data set</Keywords>  
+      <Packaging>module</Packaging>
+      <SourcesRoot>src</SourcesRoot>
+      <Resource Name="dc.data.rcc.PKG"/>
+      <Resource Name="dc.data.rcc.DCmemberD.GBL"/>
+      <Resource Name="dc.data.rcc.DCmemberI.GBL"/>
+      <Resource Name="dc.data.rcc.GMbadgeD.GBL"/>
+      <Resource Name="dc.data.rcc.GMbadgeI.GBL"/>
+    </Module>
+  </Document>
+</Export>
