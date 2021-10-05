@@ -2,6 +2,10 @@
 
 zn "%SYS"
 Do ##class(Security.Users).UnExpireUserPasswords("*")
+set obj=##class(Security.SSLConfigs).%OpenId("ISC.FeatureTracker.SSL.Config")
+set ssl=obj.%ConstructClone(1)
+set ssl.Name="community"
+do ssl.%Save()
 
 zn "USER"
 zpm "load /opt/irisbuild/ -v":1:1
