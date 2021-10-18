@@ -80,8 +80,4 @@ Settings file to let you immedietly code in VSCode with [VSCode ObjectScript plu
 ###  .vscode/launch.json  
 Config file if you want to debug with VSCode ObjectScript
 
-[Related Article in DC](https://community.intersystems.com/post/generating-ofx-v1)
-
-[Related Video](https://youtu.be/bVSlprhsUJ8)   
-
 [Article in DC](https://community.intersystems.com/post/dataset-oex-reviews)
