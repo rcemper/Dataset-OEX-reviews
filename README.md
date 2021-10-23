@@ -30,6 +30,7 @@ docker-compose up -d --build
 ## How to Test it
 Connect to the containers SMP and examine content in namespace USER
 applying the decribed examples or use commandline $system.SQL.Shell()
+**[or use Online Demo](https://dataset-oex-reviews.demo.community.intersystems.com/csp/sys/UtilHome.csp)**
 
 ### Example 1 
 - distibution of ratings
