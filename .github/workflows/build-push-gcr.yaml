@@ -11,7 +11,7 @@ env:
   IMAGE_NAME:   dataset-oex-reviews
   SERVICE:      dataset-oex-reviews
   DOMAIN_NAME:  dataset-oex-reviews.demo.community.intersystems.com
-# Leave this section untouched
+# Leave this section untouched  ok
   PROJECT_ID:   iris-community-demos
   CLUSTER_NAME: demo
   GITHUB_SHA:   ${{ github.sha }}
