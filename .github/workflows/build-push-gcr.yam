@@ -8,9 +8,9 @@ on:
 
 env:
   # Change this section according to your needs
-  IMAGE_NAME:   oexreviews-image
-  SERVICE:      resultver
-  DOMAIN_NAME:  oexreviews.demo.community.intersystems.com
+  IMAGE_NAME:   dataset-oex-reviews
+  SERVICE:      dataset-oex-reviews
+  DOMAIN_NAME:  dataset-oex-reviews.demo.community.intersystems.com
 # Leave this section untouched
   PROJECT_ID:   iris-community-demos
   CLUSTER_NAME: demo
