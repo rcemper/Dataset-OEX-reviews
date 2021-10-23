@@ -9,7 +9,7 @@ on:
 env:
   # Change this section according to your needs
   IMAGE_NAME:   dataset-oex-reviews
-  SERVICE:      iris
+  SERVICE:      dataset-oex-reviews
   DOMAIN_NAME:  dataset-oex-reviews.demo.community.intersystems.com
 # Leave this section untouched  ok
   PROJECT_ID:   iris-community-demos
