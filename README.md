@@ -29,8 +29,8 @@ docker-compose up -d --build
 ```
 ## How to Test it
 Connect to the containers SMP and examine content in namespace USER
-applying the decribed examples or use commandline $system.SQL.Shell()
-**[or use Online Demo](https://dataset-oex-reviews.demo.community.intersystems.com/csp/sys/UtilHome.csp)**
+applying the decribed examples or use commandline $system.SQL.Shell()     
+**[or use Online Demo](https://oex-reviews.demo.community.intersystems.com/csp/sys/%25CSP.Portal.Home.zen) :**
 
 ### Example 1 
 - distibution of ratings
