@@ -6,7 +6,7 @@ Class dc.data.rcc.OEX Extends %Persistent
 Parameter DEFAULTGLOBAL = "^rcc.OEX";
 
 /// visible pages on OEX
-Parameter PAGES = 17;
+Parameter PAGES = 19;
 
 Parameter MARKER = "<a _ngcontent-sc";
 
@@ -38,7 +38,7 @@ Property stars10 As %Integer;
 
 Property IRIS As %Boolean [ Calculated, SqlComputeCode = { set {*}=($zcvt({technology},"U")["IRIS") }, SqlComputed ];
 
-Property ZPM As %Boolean [ Calculated, SqlComputeCode = { set {*}=$S({zpmmodul}/1={zpmmodul}:{zpmmodul},1:{zpmmodul}]"") }, SqlComputed ];
+Property ZPM As %Boolean [ Calculated, SqlComputeCode = { set {*}=$S({zpmmodul}/1={zpmmodul}:{zpmmodul},1:{zpmmodul}]"") break   }, SqlComputed ];
 
 Index url On url [ Unique ];
 
@@ -54,14 +54,15 @@ ClassMethod Req() As %Net.HttpRequest
 }
 
 /// init & scan OEX directory 
-ClassMethod Load(neu = 1)
+ClassMethod Load(new = 1)
 {
-	if neu do ..%KillExtent()	
+	if new do ..%KillExtent()	
 	set req=..Req()
 	for pg=1:1:..#PAGES {
 		set url="/solutions/page/"_pg
 			,sc=req.Get(url)
 			,res=(req.HttpResponse.Data)
+			,pr=0
 		while 'res.AtEnd {
 			set line=res.ReadLine()
 			if line[..#MARKER {
@@ -103,7 +104,7 @@ ClassMethod Fill(maxid = 0)
 			,page=$replace(page,"&l;","<")
 			,page=$replace(page,"&g;",">")
 			,page=$replace(page,"\n",$c(13,10))
-			,obj.author  =$p($p(page,"firstName"":""",2),""",")
+			,obj.author  =..crypt($p($p(page,"firstName"":""",2),""","))
 			,ver=$p($p(page,"Versions"":[{""ver"":""",2),""",")
 			,obj.version=$s(ver="":"1.0.0",1:ver) 
 			,obj.zpmmodul=$p($p(page,"PackageName"":""",2),""",")
@@ -111,6 +112,16 @@ ClassMethod Fill(maxid = 0)
 			,sc = obj.%Save()
 		write id,":",sc," " if 'sc b
 		}
+}
+
+/// hide readable name
+ClassMethod crypt(name As %String = "unknown") As %String
+{
+	set n=$zcvt(name,"U")
+		,p=$a(n)#32
+		,cy="" 
+	for i=1:1:$l(n) set c=p+$a(n,i),cy=cy_$c(c)
+	quit cy
 }
 
 Storage Default
