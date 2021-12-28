@@ -54,15 +54,15 @@ ClassMethod Req() As %Net.HttpRequest
 }
 
 /// init & scan OEX directory 
-ClassMethod Load(new = 1)
+ClassMethod Load(fresh = 1)
 {
-	if new do ..%KillExtent()	
+	if fresh do ..%KillExtent()	
 	set req=..Req()
 	for pg=1:1:..#PAGES {
 		set url="/solutions/page/"_pg
 			,sc=req.Get(url)
 			,res=(req.HttpResponse.Data)
-			,pr=0
+#;			,pr=0
 		while 'res.AtEnd {
 			set line=res.ReadLine()
 			if line[..#MARKER {
