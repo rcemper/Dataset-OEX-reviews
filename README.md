@@ -2,9 +2,9 @@
 This data set is my personal log of running reviews in Open Exchange.   
 It is just a table with 555 records and no special features.    
 Ready to run experiments on various ways of indexing.   
-Personal names of authors are scrambled for this examples.   
+Personal names of authors are scrambled for this example.   
 
-All data resulting from the analysis of the OEX web pages.   
+All data are resulting from the analysis of the OEX web pages.   
 The first run collects the URL for the Details pages skipping duplicates    
 imposed by the "featured" header block.   
 The next run collects updates and details of the packages as available.   
