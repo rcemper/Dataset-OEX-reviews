@@ -1,7 +1,8 @@
 # Dataset OEX Reviews
 This data set is my personal log of running reviews in Open Exchange.   
-It is just a table with 504 records and no special features.    
+It is just a table with 555 records and no special features.    
 Ready to run experiments on various ways of indexing.   
+Personal names of authors are scrambled for this examples.   
 
 All data resulting from the analysis of the OEX web pages.   
 The first run collects the URL for the Details pages skipping duplicates    
@@ -64,12 +65,16 @@ FROM dc_data_rcc.OEX
 where stars > 5 group by author order by 1 desc
 ----------------------------------------------
 stars	author
-6.0	Michael Braam
-6.0	Peter Steiwer
-6.0	Guillaume Rongier
-6.0	Jose Tomas Salvador
-6.0	Lorenzo Scalese
-5.5	Evgeny Shvarov
+6.0	ZVPUNRY-O_NNZ
+6.0	`UdUb0cdUYgUb
+6.0	N\PSSH\TL'YVUNPLY
+6.0	TY]O*^YWK]*]KV`KNY\
+6.0	X[^QZf[,_OMXQ_Q
+6.0	ZN_V\-`N[PURg-ZNPVN`
+6.0	fXeZXl3`\^[T\_Xa^b
+5.5	J[LJS^%XM[FWT[
+5.5	HQMXV]$QEWPIRRMOSZ
+5.5	rnkb9fZkq9i^k^bkZ9`hf^l
 ----------------------------------------------
 ```
 ## What's inside the repository
