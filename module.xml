@@ -3,7 +3,7 @@
   <Document name="dataset-oex-reviews.ZPM">
     <Module>
       <Name>dataset-oex-reviews</Name>
-      <Version>0.1.0</Version>
+      <Version>0.1.1</Version>
       <Description>review statistics on OEX</Description>
       <Keywords>data set</Keywords>  
       <Packaging>module</Packaging>
