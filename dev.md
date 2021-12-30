@@ -2,7 +2,7 @@
 ## clean up docker 
 use it when docker says "There is no space left on device". It will remove built but not used images and other temporary files.
 ```
-docker system prune -f
+docker system prune -f 
 ```
 
 ## build container with no cache
