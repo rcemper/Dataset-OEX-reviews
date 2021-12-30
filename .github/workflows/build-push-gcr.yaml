@@ -10,7 +10,7 @@ env:
   # Change this section according to your needs
   IMAGE_NAME:   dataset-oex-reviews
   SERVICE:      dataset-oex-reviews
-  DOMAIN_NAME:  oex.demo.community.intersystems.com
+  DOMAIN_NAME:  dataset-oex-reviews.demo.community.intersystems.com
 # Leave this section untouched 
   PROJECT_ID:   iris-community-demos
   CLUSTER_NAME: demo
