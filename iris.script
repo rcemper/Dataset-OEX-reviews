@@ -10,4 +10,4 @@ do ssl.%Save()
 zn "USER"
 ZPM "install webterminal" 
 zpm "load /opt/irisbuild/ -v":1
-halt
+halt   
